@@ -1,0 +1,19 @@
+#include<iostream>
+#define LOG(x) std::cout<<x<<std::endl
+
+
+
+int main()
+{
+	int a = 6;
+	int b = 4;
+	int* ref = &a;
+	*ref = 234;
+	ref = &b;
+	*ref = 291;
+
+
+
+	LOG(a);
+	LOG(b);
+	std::cin.get();
