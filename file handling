@@ -1,0 +1,28 @@
+#include <iostream>
+#include<fstream>
+#include<sstream>
+
+using namespace std;
+
+int main() {
+	ifstream file;
+
+	file.open("test.txt"); //file name
+
+	if (file.fail())
+	{
+		cout << "File failed to open." << endl;
+		return 1;
+	}
+
+	stringstream string1;
+	string1 << file.rdbuf(); //return a pointer associated with the file to string1
+	string file_contents;
+	file_contents = string1.str();
+	cout << file_contents << endl;
+	file.close();
+
+	string string2 = "ganggu";
+
+	cout << file_contents.replace(0, 3, string2);
+}
