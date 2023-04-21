@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+
+#define max 5
+string data[max];
+int top=0;
+
+bool isFull(){
+    if(top>=max){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+bool isEmpty(){
+    if(top<=0){
+        return true;
+    } else{
+        return false;
+    }
+}
+
+void enqueue(){
+    if(!isFull()) {
+        cout << "Masukkan data : ";
+        cin >> data[top];
+        top++;
+    }
+}
+
+void dequeue(){
+    if(!isEmpty()) {
+        for(int a = 0; a < top-1; a++){
+            data[a] = data[a+1];
+        }
+        top--;
+    }
+}
+
+void clear(){
+    if(top!=0){
+    for(int a= top-1; a >= 0; a--){
+        data[a] = "";
+    }
+    top = 0;
+    }
+
+}
+
+void view(){
+    if(!isEmpty()) {
+        cout << "Data Antrian : " << endl;
+        for(int a = top-1; a >= 0; a--){
+            cout << a+1 << ". " << data[a] << endl;
+        }
+    }else {
+        cout << "Antrian kosong" << endl;
+    }
+
+    if(isFull()){
+        cout << "Antrian penuh" << endl;
+    }
+    cout << endl;
+}
+
+int main(){
+    int pil; 
+    string input;
+
+    queue:
+    system("cls");
+    view();
+    cout << "Menu Utama\n1.Enqueue\n2.Dequeue\n3.Clear Queue\nPilihan : ";
+    cin >> pil;
+
+    if(pil == 1){
+        system("cls");
+//cout << "Enqueue" << endl;
+        enqueue();
+        goto queue;
+    } else if(pil == 2){
+        //cout << "Dequeue" << endl;
+        system ("cls");
+        dequeue();
+        goto queue;
+    } else if(pil == 3){
+        //cout << "clear" << endl;
+        system("cls");
+        clear();
+        goto queue; //goto works like dal segno
+    }
+}
