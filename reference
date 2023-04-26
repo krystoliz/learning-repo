@@ -17,3 +17,4 @@ int main()
 	LOG(a);
 	LOG(b);
 	std::cin.get();
+xcxcxc
