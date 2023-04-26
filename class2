@@ -1,0 +1,80 @@
+#include <iostream>
+using std::string;
+
+class Absractgroup {
+    virtual void disbandmentyear()=0;
+};
+class kpopGroup : Absractgroup  {
+    protected:
+    string Name;
+    int DebutYear;
+    string CompanyName;
+    bool Permanence;
+    public:
+    void setName(string name) { 
+        Name = name; }
+    string getName(){
+        return Name;
+    }
+    void setCompanyName(string companyName){
+        CompanyName = companyName;
+    }
+    string getCompanyName(){
+        return CompanyName;
+    }
+    void setDebutYear(int debutyear){
+        DebutYear = debutyear;
+    }
+    int getDebutYear(){
+        return DebutYear;
+    }
+    void setPermanence(bool permanence){
+        Permanence = permanence;
+    }
+    void output(){
+        std::cout << "Name : " << Name << std::endl;
+        std::cout << "Debut year : " << DebutYear << std::endl;
+        std::cout << "Company : " << CompanyName << std::endl;
+        
+    }
+    kpopGroup(string name, int debutYear, string companyName, bool permanence){
+        Name = name;
+        DebutYear = debutYear;
+        CompanyName = companyName; 
+        Permanence = permanence;
+    }
+    void disbandmentyear(){
+        if(Permanence){
+            std::cout << Name << " will disband in the future." << std::endl;
+        } else {
+            std::cout << Name << " will not disband" << std::endl;
+            std::cout << std::endl;   }
+    }
+
+    virtual void Award(){
+        std::cout << Name <<" won the Song of The Year Award" << std::endl; 
+    }
+};
+
+class Girlgroup : public kpopGroup {
+    public:
+    string DebutSong;
+    Girlgroup(string name, int debutYear, string companyName, bool permanence, string debutSong) : kpopGroup(name, debutYear, companyName, permanence){
+        DebutSong = debutSong;
+    }
+    
+    void Debut(){
+        std::cout << Name << "'s debut song is " << DebutSong << std::endl;
+    }
+
+    void Award(){
+        std::cout << Name << " won the Best Girlgroup Award" << std::endl;
+    }
+};
+
+int main(){
+    Girlgroup tripleS = Girlgroup("tripleS", 2022, "MODHAUS", 1, "Generation");
+    kpopGroup *e1 = &tripleS;
+
+    e1->Award();
+}
